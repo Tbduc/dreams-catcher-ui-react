@@ -1,0 +1,57 @@
+html, body, .h-100 {
+    height: 100%;
+  }
+
+  .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .Button {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    width: 200px;
+    height: 50px;
+    font-family: "Abril Fatface", cursive;
+    font-size: 18px;
+    color: white;
+    background-color: #d24d59;
+    border: 2px solid #d24d59;
+    border-radius: 25px;
+    text-align: center;
+    line-height: 20px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .Button:hover {
+    background-color: #DC7C84;
+    color: white;
+  }
+
+  .title {
+        font-family: 'Antic Didone', serif;
+        color: #d24d59;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        margin-left: 30px;
+
+  }

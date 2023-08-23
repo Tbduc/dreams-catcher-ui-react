@@ -1,0 +1,131 @@
+.dreams-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  margin-bottom: 20vh;
+  margin-top: 10vh;
+}
+
+.dreams {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-top: 10vh;
+}
+
+.dream {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 40px;
+  
+}
+
+.dream-photo {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.dream-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* .dream-line {
+  width: 2px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #000000;
+} */
+
+.dream-details {
+  position: absolute;
+  flex-direction: column;
+  justify-content: center;
+  width: 300px;
+  min-height: 250px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  margin-left: 20vh;
+  border: 0.5px solid  rgba(0, 0, 0, 0.247);
+}
+
+.dream-details h2, .dream-details p {
+  margin: 0;
+  padding: 0;
+}
+
+.dream-details h2 {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.dream-details .dream-date {
+  color: #999;
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+}
+
+.dream-details .dream-description {
+  margin-bottom: 10px;
+}
+
+         
+.btn-dream {
+  background-image: linear-gradient(to right, #e53935 0%, #e35d5b  51%, #e53935  100%);
+  margin: 10px 0px;
+  padding: 5px;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  font-size: 14px;
+  max-width: 100px;
+  text-decoration: inherit;
+}
+
+.btn-dream:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: inherit;
+}
+
+.no-decoration {
+  text-decoration: none;
+}
+
+.read-more-btn {
+  position: absolute;
+  bottom: 10px;
+  display: block;
+  width: 130px;
+  height: 50px;
+  font-size: 18px;
+  color: black;
+  background-color: white;
+  border: 0.5px solid  rgba(0, 0, 0, 0.116);
+  border-radius: 25px;
+  text-align: center;
+  line-height: 30px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.read-more-btn:hover {
+  background-color: #E3C7C6;
+  color: white;
+}

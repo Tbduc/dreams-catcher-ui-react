@@ -1,0 +1,43 @@
+.login-container {
+  text-align: center;
+}
+
+.login-content {
+  background: #fff;
+  box-shadow: 0 1px 9px rgba(45, 6, 17, 0.27);
+  border-radius: 7px;
+  width: 210px;
+  display: inline-block;
+  margin-top: 20px;
+  vertical-align: middle;
+  position: relative;
+}
+
+.social-btn {
+  margin-bottom: 7px;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.social-btn img {
+  height: 24px;
+  float: left;
+  margin-top: 0px;
+}
+
+.social-btn.google {
+  margin-top: 5px;
+}
+
+.social-btn.facebook img {
+  height: 24px;
+  margin-left: 3px;
+}
+
+.login-title {
+  font-size: 1.5em;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 30px;
+  color: rgba(0, 0, 0, 0.65);
+}

@@ -1,0 +1,94 @@
+  form {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  h1 {
+    font-weight: 100;
+    color: white;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd5d5;
+  }
+  
+  .form {
+    background: #0e101c;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  p {
+    color: #d24d59;
+  }
+  
+  p.login::before {
+    display: inline;
+    content: "⚠ ";
+  }
+  
+  #login input {
+    margin-bottom: 10px;
+  }
+
+  #login label {
+    margin-top: 0 !important;
+  }
+
+  #login input:focus {
+    border: none !important;
+  }
+  
+  button[type="submit"],
+  input[type="submit"] {
+    background: #d24d59;
+    color: white;
+    text-transform: uppercase;
+    border: none;
+    margin-top: 40px;
+    padding: 8px;
+    font-size: 14px;
+    font-weight: 100;
+  }
+  
+  button[type="submit"]:hover,
+  input[type="submit"]:hover {
+    background: #d24d59;
+  }
+  
+  button[type="submit"]:active,
+  input[type="button"]:active,
+  input[type="submit"]:active {
+    transition: 0.3s all;
+    transform: translateY(3px);
+    border: 1px solid transparent;
+    opacity: 0.8;
+  }
+  
+  input:disabled {
+    opacity: 0.4;
+  }
+  
+  input[type="button"]:hover {
+    transition: 0.3s all;
+  }
+  
+  button[type="submit"],
+  input[type="button"],
+  input[type="submit"] {
+    -webkit-appearance: none;
+  }
+  
+  hr {
+    margin-top: 30px;
+  }
+  
+  button {
+    display: block;
+    appearance: none;
+    margin-top: 40px;
+    border: 1px solid #333;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 4px;
+  }
