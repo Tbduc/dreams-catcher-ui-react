@@ -14,7 +14,7 @@ const AllDreams = () => {
   }, []);
 
   const fetchData = async () => { 
-    await fetch('https://localhost:8080/api/v1/dreams/all')
+    await fetch('http://localhost:8080/api/v1/dreams/all')
     .then(response => response.json())
     .then(data => setDreams(data));
   }

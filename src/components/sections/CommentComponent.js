@@ -29,7 +29,7 @@ const CommentComponent = (props) => {
     }
 
     const addComment = async () => {
-        const COMMENT_URL = `https://localhost:8080/api/v1/dreams/${props.data.id}/comment`;
+        const COMMENT_URL = `http://localhost:8080/api/v1/dreams/${props.data.id}/comment`;
         try {
             if (user.id)
                 return await axios.post(COMMENT_URL, comment, config)

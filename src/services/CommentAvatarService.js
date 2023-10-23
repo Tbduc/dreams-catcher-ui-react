@@ -11,7 +11,7 @@ const CommentAvatarService = (props) => {
     useEffect(() => {
         const fetchData = () => {
             try {
-                fetch(`https://localhost:8080/api/v1/users/profile-auth/${props.data}`)
+                fetch(`http://localhost:8080/api/v1/users/profile-auth/${props.data}`)
                 .then(response =>
                     response.json()
                 )
@@ -31,7 +31,7 @@ const CommentAvatarService = (props) => {
 
     const fetchImageData = async () => {
         try { 
-            await fetch(`https://localhost:8080/api/v1/users/avatar/${profile.profilePictureId}`)
+            await fetch(`http://localhost:8080/api/v1/users/avatar/${profile.profilePictureId}`)
             .then(response =>
                 response.text()
             ).then((actualData) =>

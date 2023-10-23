@@ -7,13 +7,14 @@ import defaultPhoto from '../../assets/images/Default.jpeg';
 
 const Dreams = () => {
   const [dreams, setDreams] = useState([]);
+  const wordLimit = 90;
 
   useEffect(() => {
     fetchData()
   }, []);
 
   const fetchData = async () => { 
-    await fetch('https://localhost:8080/api/v1/dreams/most-popular')
+    await fetch('http://localhost:8080/api/v1/dreams/most-popular')
     .then(response => response.json())
     .then(data => setDreams(data));
   }
@@ -37,7 +38,7 @@ const Dreams = () => {
         <div className="dream" key={index}>
         <div className="dream-photo">
         {dream.image ? (
-                <ImageService data={dream} className="dream-image" />
+              <ImageService data={dream} className="dream-image" />
               ) : (
                 <img
                   src={defaultPhoto}
@@ -51,7 +52,7 @@ const Dreams = () => {
         <h2>{dream.dreamTitle}</h2>
         <span>{dream.date}</span>
       </div>
-      <p>{dream.dreamDescription}</p>
+      <p>{dream.dreamDescription.slice(0, wordLimit)}...</p>
       <Link className='no-decoration' to={`/dream-details/${dream.id}`}><span className='btn-dream'>Read More</span></Link>
       <Routes>
         <Route path="/dream-details/:id" />

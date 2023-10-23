@@ -11,7 +11,7 @@ class ProfileService {
         formData.append("image", file);
         formData.append("userId", userId);
         return axios
-            .put("https://localhost:8080/api/v1/update/profile-image", formData, config)
+            .put("http://localhost:8080/api/v1/update/profile-image", formData, config)
             .then(response => response.status)
             .catch(err => console.warn(err));
     }

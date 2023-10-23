@@ -9,7 +9,7 @@ const ImageService = (props) => {
         const fetchImageData = async () => {
             try {
                 if (props?.data?.image)
-                    await fetch(`https://localhost:8080/api/v1/image/display/${props.data.image}`)
+                    await fetch(`http://localhost:8080/api/v1/image/display/${props.data.image}`)
                     .then(response =>
                          response.text()
                     ).then((actualData) =>

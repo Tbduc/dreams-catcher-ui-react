@@ -152,6 +152,9 @@ const Login = () => {
             </button>
           </form>
           <GoogleLogin />
+          <div className='items-center justify-center h-14 w-full my-4 mt-4'>
+            <a href="/forget-password" className="text-secondary">Did you forget password?</a>
+          </div>
           {message && (
               <div className="form-group mt-3">
                 <div className="alert alert-danger" role="alert">

@@ -10,7 +10,7 @@ const AllMentors = () => {
   const [mentors, setMentors] = useState([]);
 
   useEffect(() => {
-    fetch('https://localhost:8080/api/v1/mentors/all')
+    fetch('http://localhost:8080/api/v1/mentors/all')
       .then(response => response.json())
       .then(data => setMentors(Array.isArray(data) ? data : []))
     .catch(error => console.log(error));

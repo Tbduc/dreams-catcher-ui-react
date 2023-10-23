@@ -11,7 +11,7 @@ import dislikePhoto from '../../assets/images/dislike.jpeg';
 
 function OfferDetails() {
     const { id } = useParams();
-    const url = `https://localhost:8080/api/v1/offers/${id}`;
+    const url = `http://localhost:8080/api/v1/offers/${id}`;
     const [offer, setOffer] = useState(null);
     const [liked, setLiked] = useState(false);
     const [disliked, setDisliked] = useState(false);

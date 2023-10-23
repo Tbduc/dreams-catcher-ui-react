@@ -2,14 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 function PopularDreams() {
   const [mostLikedDream, setMostLikedDream] = useState(null);
-  const url = `https://localhost:8080/api/v1/dreams/most-liked`;
-
-  // useEffect(() => {
-  //   fetch('http://localhost:8080/api/v1/dreams/most-liked')
-  //     .then(response => response.json())
-  //     .then(data => setMostLikedDream(data));
-  // }, []);
-
+  const url = `http://localhost:8080/api/v1/dreams/most-liked`;
   
   useEffect(() => {
   

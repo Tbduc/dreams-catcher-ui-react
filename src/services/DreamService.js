@@ -1,7 +1,7 @@
 import axios from "axios"
 import { ACCESS_TOKEN } from "../constants";
 
-const DREAM_API_BASE_URL = "https://localhost:8080/api/v1/dreams/";
+const DREAM_API_BASE_URL = "http://localhost:8080/api/v1/dreams/";
 
 class DreamService {
     constructor() {
@@ -45,7 +45,7 @@ class DreamService {
         formData.append("image", file);
         formData.append("dreamId", dreamId);
         return axios
-            .post("https://localhost:8080/api/v1/upload", formData, config)
+            .post("http://localhost:8080/api/v1/upload", formData, config)
             .then(response => response.status)
             .catch(err => console.warn(err));
     }

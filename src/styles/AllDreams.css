@@ -1,80 +1,80 @@
 .dreams-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); 
-    grid-gap: 10px;
-    margin: 0 auto;
-    max-width: 1200px; 
-  }
-  
-  .dream-item {
-    position: relative;
-    width: 100%; 
-    height: 8cm;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-  }
-  
-  .dream-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter:  brightness(0.7) contrast(1.2);
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .dream-item:hover img {
-    transform: scale(1.05);
-  }
-  
-  .dream-title {
-    position: absolute;
-    bottom: 1.0cm;
-    left: 0;
-    width: 100%;
-    padding: 0.5rem;
-    font-size: 1rem;
-    font-weight: bold;
-    color: black;
-    text-align: center;
-    border-radius: 0px 0px 10px 10px;
-  }
-  
-  .container-all-dreams {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 15vh;
-  }
-  
-  .header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
-  }
-  
-  .all {
-    font-family: 'Antic Didone', serif;
-    font-size: 1.5rem;
-    color: #dea8d8;
-    margin: 0;
-  }
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  grid-gap: 10px;
+  margin: 0 auto;
+  max-width: 1200px; 
+}
 
-  .loader {
-    border: 16px solid #f3f3f3;
-    border-top: 16px solid #d24d59;
-    border-radius: 50%;
-    width: 130px;
-    height: 130px;
-    animation: spin 2s linear infinite;
-    margin-top: 150px;
-  }
-  
-  @keyframes spin {
-    0%  { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
+.dream-item {
+  position: relative;
+  width: 100%; 
+  height: 8cm;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.dream-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter:  brightness(0.7) contrast(1.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.dream-item:hover img {
+  transform: scale(1.05);
+}
+
+.dream-title {
+  position: absolute;
+  bottom: 1.0cm;
+  left: 0;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.container-all-dreams {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15vh;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.all {
+  font-family: 'Antic Didone', serif;
+  font-size: 1.5rem;
+  color: #dea8d8;
+  margin: 0;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #d24d59;
+  border-radius: 50%;
+  width: 130px;
+  height: 130px;
+  animation: spin 2s linear infinite;
+  margin-top: 150px;
+}
+
+@keyframes spin {
+  0%  { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

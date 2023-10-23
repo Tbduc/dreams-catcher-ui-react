@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 const PublicProfile = () => {
     const { mentorNickname } = useParams();
     const [unverifiedMentors, setUnverifiedMentors] = useState([]);
-    const mentorUrl = `https://localhost:8080/api/v1/mentors/unverified`;
+    const mentorUrl = `http://localhost:8080/api/v1/mentors/unverified`;
   
     useEffect(() => {
       fetch(mentorUrl)
@@ -20,7 +20,7 @@ const PublicProfile = () => {
     }, []);
   
     const handleAccept = async mentorNickname => {
-      const url = `https://localhost:8080/api/v1/admins/${mentorNickname}/approve`;
+      const url = `http://localhost:8080/api/v1/admins/${mentorNickname}/approve`;
   
       try {
         await fetch(url, { method: 'POST' });

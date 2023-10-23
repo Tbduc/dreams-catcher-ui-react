@@ -31,6 +31,8 @@ import PaypalComponent from "./components/sections/PaypalComponent";
 import PaypalSuccess from "./components/sections/paypal/PayPalSuccess";
 import PaypalError from "./components/sections/paypal/PayPalError";
 import PaypalCancel from "./components/sections/paypal/PayPalCancel";
+import PasswordReset from "./components/sections/password/PasswordReset";
+import ConfirmNewPassword from "./components/sections/password/ConfirmNewPassword";
 
 class App extends Component {
 
@@ -66,11 +68,11 @@ class App extends Component {
               <Route exact path="/paypal-success" element={<PaypalSuccess />} />
               <Route exact path="/paypal-error" element={<PaypalError />} />
               <Route exact path="/paypal-cancel" element={<PaypalCancel />} />
+              <Route exact path="/forget-password" element={<PasswordReset />} />
+              <Route exact path="/confirm-reset" element={<ConfirmNewPassword />} />
             </Routes>
           </Router>
         </div>
-
-
     );
   }
 }

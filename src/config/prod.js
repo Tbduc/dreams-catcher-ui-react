@@ -1,4 +1,4 @@
 module.exports = {
-  redirectUri: "https://localhost:8081/oauth2/redirect",
-  apiBaseUrl: "https://localhost:8080"
+  redirectUri: "http://localhost:8081/oauth2/redirect",
+  apiBaseUrl: "http://localhost:8080"
 };

@@ -25,8 +25,8 @@ import {
 
 const DreamDetails = () => {
     const { id } = useParams();
-    const url = `https://localhost:8080/api/v1/dreams/${id}`;
-    const commentsUrl = `https://localhost:8080/api/v1/comments/dream/${id}`;
+    const url = `http://localhost:8080/api/v1/dreams/${id}`;
+    const commentsUrl = `http://localhost:8080/api/v1/comments/dream/${id}`;
     const [dream, setDream] = useState("");
     const [liked, setLiked] = useState(false);
     const [disliked, setDisliked] = useState(false);

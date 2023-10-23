@@ -14,7 +14,7 @@ const PublicProfile = () => {
     const { nickname } = useParams();
     const [mentor, setMentor] = useState({});
     const [offers, setOffers] = useState([]);
-    const mentorUrl = `https://localhost:8080/api/v1/mentors/${nickname}`;
+    const mentorUrl = `http://localhost:8080/api/v1/mentors/${nickname}`;
     const [followed, setFollowed] = useState(false);
     const [unfollowed, setUnfollowed] = useState(false);
     const user = JSON.parse(localStorage.getItem('user'))

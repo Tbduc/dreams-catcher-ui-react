@@ -46,9 +46,6 @@ const SignIn = () => {
         <div className='items-center justify-center h-14 w-full my-4'>
           <button onClick={signIn} className='btn btn-success mb-3'>Log in</button>
         </div>
-        <div className='items-center justify-center h-14 w-full my-4'>
-          <button onClick={signIn} className='btn btn-success mb-3'>Log in</button>
-        </div>
         <GoogleLogin />
       </div>
     </div>

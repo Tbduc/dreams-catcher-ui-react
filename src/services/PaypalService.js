@@ -1,7 +1,7 @@
 import axios from "axios"
 import { ACCESS_TOKEN } from "../constants"
 
-const PAYPAL_API_BASE_URL = "https://localhost:8080/payment/create"
+const PAYPAL_API_BASE_URL = "http://localhost:8080/payment/create"
 
 const PaypalService = async (props) => {
         console.log(props)

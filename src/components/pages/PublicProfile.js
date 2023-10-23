@@ -16,7 +16,7 @@ const PublicProfile = () => {
     const { nickname } = useParams();
     const [dreamer, setDreamer] = useState({});
     const [dreams, setDreams] = useState([]);
-    const dreamerUrl = `https://localhost:8080/api/v1/dreamers/${nickname}`;
+    const dreamerUrl = `http://localhost:8080/api/v1/dreamers/${nickname}`;
     const [followed, setFollowed] = useState(false);
     const [unfollowed, setUnfollowed] = useState(false);
     const user = JSON.parse(localStorage.getItem('user'))

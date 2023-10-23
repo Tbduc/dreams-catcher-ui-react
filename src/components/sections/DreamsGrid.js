@@ -6,7 +6,7 @@ import defaultPhoto from '../../assets/images/Default.jpeg';
 
 const DreamsGrid = () => {
     const [dreams, setDreams] = useState([]);
-    const url = `https://localhost:8080/api/v1/dreams/recents`;
+    const url = `http://localhost:8080/api/v1/dreams/recents`;
 
     
     useEffect(() => {

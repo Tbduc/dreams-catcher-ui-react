@@ -13,7 +13,7 @@ const OfferPage = () => {
   }, []);
 
   const fetchData = async () => { 
-    await fetch('https://localhost:8080/api/v1/offers/all')
+    await fetch('http://localhost:8080/api/v1/offers/all')
     .then(response => response.json())
     .then(data => setOffer(data));
   }

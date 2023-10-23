@@ -16,7 +16,7 @@ class OfferService {
         }
       }
       const response = await axios.post(
-        `https://localhost:8080/api/v1/mentors/offer`,
+        `http://localhost:8080/api/v1/mentors/offer`,
         offer, config
       )
       console.log(response.data)
@@ -40,7 +40,7 @@ class OfferService {
     formData.append("image", file);
     formData.append("offerId", offerId);
     return axios
-        .post("https://localhost:8080/api/v1/upload", formData, config)
+        .post("http://localhost:8080/api/v1/upload", formData, config)
         .then(response => response.status)
         .catch(err => console.warn(err));
   }

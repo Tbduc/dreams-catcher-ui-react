@@ -13,7 +13,7 @@ const AvatarService = (props) => {
             console.log(props.data)
             try {
                 if (props?.data)
-                    fetch(`https://localhost:8080/api/v1/users/avatar/${props.data}`)
+                    fetch(`http://localhost:8080/api/v1/users/avatar/${props.data}`)
                     .then(response =>
                         response.text()
                     ).then((actualData) =>
@@ -27,6 +27,7 @@ const AvatarService = (props) => {
         fetchImageData()
 
     }, [props?.data]);
+    
     return (
         <div className="g-2">
             { props.tooltip ? (
