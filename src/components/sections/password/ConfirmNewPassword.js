@@ -31,7 +31,8 @@ const ConfirmNewPassword = () => {
 
     const onSubmit = () => {
         UpdatePasswordService(email, password)
-        .then();
+        .then(response => console.log(response.data))
+        .catch(error => console.log(error));
     }
 
     return (
@@ -41,9 +42,9 @@ const ConfirmNewPassword = () => {
                     <div className="col-6 text-center">
                         <label for="exampleInputEmail1" className="form-label">Email</label>
                         <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  defaultValue={email}/>
-                        <label for="exampleInputEmail1" className="form-label">Password</label>
+                        <label for="exampleInputEmail1" className="form-label">New Password</label>
                         <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  onChange={(e) => handleChangePassword(e)}/>
-                        <div id="emailHelp" className="form-text">Update your password.</div>
+                        <div id="emailHelp" className="form-text">Update your password with a new one.</div>
                         <button onClick={onSubmit} className="btn btn-primary mt-3">Update Password</button>
                     </div>
                 </div>

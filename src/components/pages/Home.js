@@ -7,6 +7,7 @@ import Navbar from '../sections/Navbar';
 import AddDreamButton from '../buttons/AddDreamButton';
 import AddOfferButton from '../buttons/AddOfferButton';
 import AuthService from '../../services/AuthService';
+import LoginPopUp from '../sections/login-pop-up/LoginPopUp';
 
 
 
@@ -16,9 +17,10 @@ const Home = () => {
     return (
         <React.Fragment>
           <Navbar/>
-            <HomeContainer>
-                <BackgroundImage src="https://i.im.ge/2023/03/26/Iliw0X.Niestandardowe-wymiary-1920x1080-px-11.jpg" />
-            </HomeContainer>
+            <LoginPopUp user={currentUser}/>
+            <div className="home-banner">
+                <img className="home-image" src="https://i.im.ge/2023/03/26/Iliw0X.Niestandardowe-wymiary-1920x1080-px-11.jpg" />
+            </div>
             {currentUser && (
               currentUser.roles[0].includes("ROLE_MENTOR") ? (<AddOfferButton user={currentUser} />)
               : (
@@ -29,27 +31,5 @@ const Home = () => {
         </React.Fragment>
     )
 }
-
-const HomeContainer = styled.div`
-    height: 50vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-style: ridge;
-    border-width: thin;
-    border-color: black;
-    margin-top: 10vh;
-    margin-bottom: 10vh;
-  `;
-  
-  const BackgroundImage = styled.img`
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    width: 60%;
-    height: 60%;
-    z-index: -1;
-  `;
-
 
 export default Home;

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import UpdatePasswordService from '../../../services/UpdatePasswordService';
+import { error } from 'jquery';
 
 const EnterNewPassword = () => {
     const [email, setEmail] = useState(null);
@@ -12,7 +13,8 @@ const EnterNewPassword = () => {
 
     const onSubmit = () => {
         UpdatePasswordService(email, password)
-        .then();
+        .then(response => console.log(response.data))
+        .catch(error => console.log(error));
     }
 
     return (

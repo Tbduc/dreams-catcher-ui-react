@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import ImageService from "../../services/ImageService";
 import defaultPhoto from '../../assets/images/Default.jpeg';
 import Navbar from '../sections/Navbar';
+import { error } from 'jquery';
 
 
 const AllDreams = () => {
@@ -16,7 +17,8 @@ const AllDreams = () => {
   const fetchData = async () => { 
     await fetch('http://localhost:8080/api/v1/dreams/all')
     .then(response => response.json())
-    .then(data => setDreams(data));
+    .then(data => setDreams(data))
+    .catch(error => console.log(error));
   }
   
   return (

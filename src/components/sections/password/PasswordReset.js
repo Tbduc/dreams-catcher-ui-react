@@ -11,7 +11,8 @@ const PasswordReset = () => {
 
     const onSubmit = () => {
         PasswordService(email)
-        .then();
+        .then(response => console.log(response.data))
+        .catch(error => console.log(error));
     }
 
     return (

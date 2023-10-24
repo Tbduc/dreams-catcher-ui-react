@@ -24,7 +24,6 @@ import OfferDetails from "./components/pages/OfferDetails";
 import OfferPage from "./components/pages/OfferPage";
 import AddOffer from "./components/pages/AddOffer";
 import MentorProfile from './components/pages/MentorProfile';
-import CardProfile from './components/sections/ProfileUpdate'
 import AllMentors from "./components/sections/AllMentors";
 import ProfileTest from "./components/pages/Profile";
 import PaypalComponent from "./components/sections/PaypalComponent";
@@ -41,7 +40,7 @@ class App extends Component {
         <div className="container mt-3">
           <Router>
             <Routes>
-              <Route exact path="/" element={<HomePage />} />
+              <Route exact path="/" element={<Home />} />
               <Route exact path="/home" element={<Home />} />
               <Route exact path="/login/*" element={<Login />} />
               <Route exact path="/register" element={<Register />} />
@@ -63,7 +62,6 @@ class App extends Component {
               <Route exact path="/mentor/:nickname" element={<MentorProfile />} />
               <Route exact path="/mentors" element={<AllMentors />} />
               <Route exact path="/test" element={<ProfileTest />} />
-              <Route exact path="/profile-update" element={<CardProfile />} />
               <Route exact path="/paypal-transfer/:id" element={<PaypalComponent />} />
               <Route exact path="/paypal-success" element={<PaypalSuccess />} />
               <Route exact path="/paypal-error" element={<PaypalError />} />

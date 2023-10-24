@@ -119,7 +119,7 @@ const Register = () => {
             className="profile-img-card"
           />
 
-          <form onSubmit={handleSubmit(onSubmit)} id="login">
+          <form onSubmit={handleSubmit(onSubmit)} id="login" className="text-center">
             
             <FormControl sx={{ m: 1, width: '25ch' }} variant="standard">
                 <TextField id="standard-basic" label="Username" variant="standard"

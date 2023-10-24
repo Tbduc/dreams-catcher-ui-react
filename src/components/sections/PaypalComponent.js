@@ -42,7 +42,7 @@ const PaypalComponent = () => {
   return (
     <div className="container d-flex justify-content-center">
         <div className="row w-50">
-            <h1 className="text-center mt-5 mb-5">Fund this Dream</h1>
+            <h1 className="text-center mt-5 mb-5 text-dark">Fund this Dream</h1>
                 <div className="mb-3">
                     <input id="method" type="hidden" className="form-control"
                             name="method" value={data.method} readonly />

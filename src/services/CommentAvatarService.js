@@ -41,6 +41,7 @@ const CommentAvatarService = (props) => {
             console.log("error", error);
         }
     };
+    
     console.log(profile)
     if(profile.profilePictureId)
         fetchImageData()
