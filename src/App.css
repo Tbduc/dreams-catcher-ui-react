@@ -70,81 +70,6 @@ label {
   }
 }
 
-/* DREAMS GRID  */
-
-.dreams-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-  margin: 0 auto;
-  width: 800px;
-}
-
-.dream-item {
-  position: relative;
-  width: 7cm;
-  height: 8cm;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-}
-
-.dream-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: blur(2px) brightness(0.7) contrast(1.2);
-  transition: transform 0.3s ease-in-out;
-}
-
-.dream-item:hover img {
-  transform: scale(1.05);
-}
-
-.dream-title {
-  position: absolute;
-  bottom: 1.0cm;
-  left: 0;
-  width: 100%;
-  padding: 0.5rem;
-  font-size: 1rem;
-  font-weight: bold;
-  color: black;
-  text-align: center;
-  border-radius: 0px 0px 10px 10px;
-}
-
-
-.container-just-added {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 15vh;
-  margin-top: 23vh;
-}
-
-.header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
-
-.just {
-  font-family: 'Antic Didone', serif;
-  font-size: 1.5rem;
-  color: #D24D59;
-  margin: 0;
-}
-
-
-
-/* DREAMS GRID END */
-
-
 /* NAVBAR START */
 
 a {
@@ -445,14 +370,11 @@ a {
   display: block;
   font-size: 1.8em;
   letter-spacing: 4px;
-/*   opacity: 0; */
   padding: 10px 0;
   text-align: right;
   text-transform: uppercase;
   -webkit-transition: color 0.3s ease;
   transition: color 0.3s ease;
-/*   -webkit-transition: 0.2s opacity 0.2s ease-out;
-  transition: 0.2s opacity 0.2s ease-out; */
 }
 
 .overlay-menu li a:hover,
@@ -463,24 +385,17 @@ a {
 }
 
 .home-banner {
-  height: 50vh;
+  height: 45vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  border-style: ridge;
-  border-width: thin;
-  border-color: black;
-  margin-top: 10vh;
+  justify-content: left;
+  align-items: end;
+  margin-top: 4vh;
   margin-bottom: 10vh;
 }
 
 .home-image {
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  width: 60%;
-  height: 60%;
-  z-index: -1;
+  width: 40em;
 }
+
 
 /* NAVBAR END */

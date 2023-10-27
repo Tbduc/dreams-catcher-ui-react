@@ -119,10 +119,6 @@ left: 15px;
   display: none;
 }
 
-.header {
-  color: #D24D59;
-}
-
 .photo {
   position: relative;
   width: 180px;
@@ -142,8 +138,8 @@ left: 15px;
 }
 
 .dream-logo {
-  width: 230px;
-  height: 27px;
+  width: 227px;
+  height: 50px;
 }
 
 .dream-link {
@@ -166,4 +162,12 @@ left: 15px;
 
 .avatar {
   max-width: 250px;
+}
+
+.container-just-added {
+  margin-bottom: 1.9em;
+}
+
+.just {
+  color: #000
 }

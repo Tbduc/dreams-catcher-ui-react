@@ -7,7 +7,7 @@ import defaultPhoto from '../../assets/images/Default.jpeg';
 
 const Dreams = () => {
   const [dreams, setDreams] = useState([]);
-  const wordLimit = 90;
+  const wordLimit = 144;
 
   useEffect(() => {
     fetchData()
@@ -23,8 +23,7 @@ const Dreams = () => {
   return (
     <div>
       <div className="header">
-        <h2 className="just">MOST POPULAR</h2>
-        <h1 className="just">DREAMS</h1>
+        <h1 className="just">MOST POPULAR DREAMS</h1>
       </div>
       { dreams.length == 0 &&
           <div class="loader-container d-flex justify-content-center">

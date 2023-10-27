@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Dropdown from 'react-bootstrap/Dropdown';
-import dreamLogo from "../../assets/images/DreamCatcher-logo2.png";
+import dreamLogo from "../../assets/images/logo_dreams_catcher.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import AuthService from "../../services/AuthService";

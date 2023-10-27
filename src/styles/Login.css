@@ -8,7 +8,7 @@
     color: white;
     text-align: center;
     padding-bottom: 10px;
-    border-bottom: 1px solid #ddd5d5;
+    border-bottom: 1px solid rgb(199, 199, 199);
   }
   
   .form {
@@ -18,7 +18,7 @@
   }
   
   p {
-    color: #d24d59;
+    color: #292929;
   }
   
   p.login::before {
