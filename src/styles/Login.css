@@ -20,6 +20,11 @@
   p {
     color: #292929;
   }
+
+  #login {
+    display: flex;
+    flex-direction: column;
+  }
   
   p.login::before {
     display: inline;
@@ -36,6 +41,11 @@
 
   #login input:focus {
     border: none !important;
+  }
+
+  #login > button.btn-primary {
+    min-width: 100px;
+    margin: auto;
   }
   
   button[type="submit"],

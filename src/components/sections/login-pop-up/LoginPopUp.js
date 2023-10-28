@@ -1,21 +1,7 @@
 import { useState, useEffect } from "react";
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import { Link } from "react-router-dom";
-
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 500,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
 
 const LoginPopUp = (props) => {
 
@@ -28,23 +14,22 @@ const LoginPopUp = (props) => {
     return (
         !props.user &&
         <div className="container">
-            <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-                className="login-modal text-center"
+            <Modal show={open} onHide={handleClose} className="modal-login" 
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
             >
-                <Box sx={style}>
-                <Typography id="modal-modal-title" variant="h6" component="h2">
-                    Login or Register
-                </Typography>
-                <Button variant="contained" color="error" className="mt-2"><Link to={'/login'} className="text-light text-decoration-none">Login page</Link></Button>
-                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    Login to DreamsCatcher or create a new account
-                </Typography>
-                </Box>
-
+                <Modal.Header closeButton>
+                <Modal.Title>Sign In or Sign Up</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Login to DreamsCatcher or create a new account</Modal.Body>
+                <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                    <Link to={'/login'} className="text-light text-decoration-none">Sign In</Link>
+                </Button>
+                <Button variant="primary" onClick={handleClose}>
+                    <Link to={'/register'} className="text-light text-decoration-none">Sign Up</Link>
+                </Button>
+                </Modal.Footer>
             </Modal>
         </div>
     );

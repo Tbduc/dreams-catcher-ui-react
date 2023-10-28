@@ -15,10 +15,9 @@ import Register from "./components/sections/RegisterComponent";
 import Home from './components/pages/Home'
 import Profile from "./components/sections/ProfileComponent";
 import PublicProfile from './components/pages/PublicProfile';
-import BoardUser from "./components/sections/BoardDreamerComponent";
-import BoardModerator from "./components/sections/BoardMentorComponent";
-import BoardAdmin from "./components/sections/BoardAdminComponent";
-import HomePage from "./components/pages/HomePage";
+import BoardUser from "./components/sections/boards/BoardDreamerComponent";
+import BoardModerator from "./components/sections/boards/BoardMentorComponent";
+import BoardAdmin from "./components/sections/boards/BoardAdminComponent";
 import AllDreams from "./components/pages/AllDreams";
 import OfferDetails from "./components/pages/OfferDetails";
 import OfferPage from "./components/pages/OfferPage";
@@ -37,7 +36,7 @@ class App extends Component {
 
   render() {
     return (
-        <div className="container mt-3">
+        <div className="container" id="main-container">
           <Router>
             <Routes>
               <Route exact path="/" element={<Home />} />

@@ -158,7 +158,7 @@ const DreamDetails = () => {
     <section className="vh-100">
       <MDBContainer className="py-5" style={{ maxWidth: "2000px" }}>
         <MDBRow className="justify-content-center">
-          <MDBCol md="11" lg="9" xl="7">
+          <MDBCol md="11" lg="9" xl="8">
           {comments.map((comment) => (
               <div className="d-flex flex-start mb-4" key={comment.id}>
                 <MDBCard className="w-100">
