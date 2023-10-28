@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import UpdatePasswordService from '../../../services/UpdatePasswordService';
 import { error } from 'jquery';
+import Navbar from '../Navbar';
 
 const EnterNewPassword = () => {
     const [email, setEmail] = useState(null);
@@ -19,7 +20,8 @@ const EnterNewPassword = () => {
 
     return (
         <div>
-            <div className="container mb-3">
+            <Navbar />
+            <div className="container mt-5 mb-3">
                 <div className="row d-flex justify-content-center">
                     <div className="col-6 text-center">
                         <label for="exampleInputEmail1" className="form-label">Email</label>

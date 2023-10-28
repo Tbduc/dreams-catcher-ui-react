@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import UpdatePasswordService from '../../../services/UpdatePasswordService';
+import Navbar from '../Navbar';
 
 const ConfirmNewPassword = () => {
     const [token, setToken] = useState(null);
@@ -22,7 +23,7 @@ const ConfirmNewPassword = () => {
         }
 
         fetchData();
-    }, []);
+    }, [token]);
 
     const handleChangePassword = (e) => {
         const value = e.target.value;
@@ -36,8 +37,10 @@ const ConfirmNewPassword = () => {
     }
 
     return (
+        email &&
         <div>
-            <div className="container mb-3">
+            <Navbar/>
+            <div className="container mt-5 mb-3">
                 <div className="row d-flex justify-content-center">
                     <div className="col-6 text-center">
                         <label for="exampleInputEmail1" className="form-label">Email</label>
