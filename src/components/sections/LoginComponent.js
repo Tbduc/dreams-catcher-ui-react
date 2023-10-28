@@ -76,7 +76,7 @@ const Login = () => {
     <div>
       <Navbar/>
       <div className="col-md-12">
-        <div className="card card-container">
+        <div className="card card-container login-card">
           <img
             src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
             alt="profile-img"

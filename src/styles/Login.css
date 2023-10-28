@@ -21,6 +21,10 @@
     color: #292929;
   }
 
+  .card.card-container.login-card {
+    min-width: 200px !important;
+  }
+
   #login {
     display: flex;
     flex-direction: column;
