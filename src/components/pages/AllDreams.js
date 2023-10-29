@@ -15,7 +15,7 @@ const AllDreams = () => {
   }, []);
 
   const fetchData = async () => { 
-    await fetch('https://dreams-catcher-spring.herokuapp.com/api/v1/dreams/all')
+    await fetch('http://localhost:8080/api/v1/dreams/all')
     .then(response => response.json())
     .then(data => setDreams(data))
     .catch(error => console.log(error));
@@ -46,7 +46,7 @@ const AllDreams = () => {
                 className="dream-image"
               />
             )}
-              <div className="dream-title">{dream.dreamTitle}</div>
+              <div className="dream-title-page">{dream.dreamTitle}</div>
             </div>
           </Link>
         ))}

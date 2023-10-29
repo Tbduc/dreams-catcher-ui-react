@@ -44,7 +44,7 @@ const OfferPage = () => {
                 className="dream-image"
               />
             )}
-              <div className="dream-title">{offer.title}</div>
+              <div className="dream-title-page">{offer.title}</div>
             </div>
           </Link>
         ))
