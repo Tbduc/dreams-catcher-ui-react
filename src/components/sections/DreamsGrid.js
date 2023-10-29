@@ -49,7 +49,7 @@ const DreamsGrid = () => {
                 className="dream-image"
               />
             )}
-              <div className="dream-title">{dream.dreamTitle}</div>
+              <div className="dream-title-page">{dream.dreamTitle}</div>
             </div>
           </Link>
         ))}
