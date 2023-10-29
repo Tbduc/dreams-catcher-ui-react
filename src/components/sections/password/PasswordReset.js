@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PasswordService from '../../../services/PasswordService';
+import Navbar from '../Navbar';
 
 const PasswordReset = () => {
     const [email, setEmail] = useState(null);
@@ -17,7 +18,8 @@ const PasswordReset = () => {
 
     return (
         <div>
-            <div className="container mb-3">
+            <Navbar />
+            <div className="container mt-5 mb-3">
                 <div className="row d-flex justify-content-center">
                     <div className="col-6 text-center">
                         <label for="exampleInputEmail1" className="form-label">Email address</label>

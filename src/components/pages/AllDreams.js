@@ -15,7 +15,7 @@ const AllDreams = () => {
   }, []);
 
   const fetchData = async () => { 
-    await fetch('http://localhost:8080/api/v1/dreams/all')
+    await fetch('https://dreams-catcher-spring.herokuapp.com/api/v1/dreams/all')
     .then(response => response.json())
     .then(data => setDreams(data))
     .catch(error => console.log(error));
@@ -34,7 +34,7 @@ const AllDreams = () => {
           </div>
       } 
       <div className="dreams-grid">
-        {dreams.map(dream => (
+        {dreams && dreams.map(dream => (
           <Link to={`/dream-details/${dream.id}`} key={dream.id} className="dream-item">
             <div className="dream-image-container">
             { typeof dream.image !== Number ? (
