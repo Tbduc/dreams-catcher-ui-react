@@ -9,24 +9,13 @@ import Navbar from "../sections/Navbar";
 import likePhoto from '../../assets/images/like.jpeg';
 import dislikePhoto from '../../assets/images/dislike.jpeg';
 import CommentComponent from "../sections/CommentComponent";
-import CommentAvatarService from "../../services/CommentAvatarService";
-
-import {
-    MDBCard,
-    MDBCardBody,
-    MDBCol,
-    MDBContainer,
-    MDBIcon,
-    MDBRow,
-    MDBTypography,
-  } from "mdb-react-ui-kit";
+import Comments from "../sections/Comments";
   
 
 
 const DreamDetails = () => {
     const { id } = useParams();
     const url = `http://localhost:8080/api/v1/dreams/${id}`;
-    const commentsUrl = `http://localhost:8080/api/v1/comments/dream/${id}`;
     const [dream, setDream] = useState("");
     const [liked, setLiked] = useState(false);
     const [disliked, setDisliked] = useState(false);
@@ -35,27 +24,16 @@ const DreamDetails = () => {
     useEffect(() => {
       window.scrollTo(0, 0)
       const fetchData = async () => {
-          try {
-              const response = await fetch(url);
-              const json = await response.json();
-              setDream(json)
-          } catch (error) {
-              console.log("error", error);
-          }
+        try {
+          const response = await fetch(url);
+          const json = await response.json();
+          setDream(json)
+        } catch (error) {
+          console.log("error", error);
+        }
       };
       fetchData();
     }, [id]);
-
-
-    useEffect(() => {
-      fetch(commentsUrl)
-      .then(response => {
-        console.log(response);
-        return response.json();
-      })
-        .then(data => {setComments(data)})
-        .catch(error => console.log(error));
-    }, []);
 
     const handleLikeDislikeDream = () => {
         if (liked) {
@@ -74,11 +52,11 @@ const DreamDetails = () => {
 
     const handleLikeDream = async () => {
         try {
-            await fetch(`${url}/like`, { method: 'PUT' });
-            setLiked(true);
-            setDream({ ...dream, likes: dream.likes + 1 });
+          await fetch(`${url}/like`, { method: 'PUT' });
+          setLiked(true);
+          setDream({ ...dream, likes: dream.likes + 1 });
         } catch (error) {
-            console.log("error", error);
+          console.log("error", error);
         }
     }
 
@@ -110,7 +88,7 @@ const DreamDetails = () => {
                               <div className="mt-5 d-flex flex-column text-dark align-items-center">
                                   <ImageService data={dream}/>
                                   
-                                  <p>{dream.dreamDescription}</p>
+                                  <p className="mt-5">{dream.dreamDescription}</p>
                               </div>
                           </div>
                           <div className="p-4 text-black">
@@ -155,40 +133,7 @@ const DreamDetails = () => {
         </div>
       <div>
     </div>
-    <section className="vh-100">
-      <MDBContainer className="py-5" style={{ maxWidth: "2000px" }}>
-        <MDBRow className="justify-content-center">
-          <MDBCol md="11" lg="9" xl="8">
-          {comments.map((comment) => (
-              <div className="d-flex flex-start mb-4" key={comment.id}>
-                <MDBCard className="w-100">
-                  <CommentAvatarService data={comment.userId} className="rounded-circle"/>
-                  <MDBCardBody className="p-4">
-                    <div>
-                      <MDBTypography tag="h5">{comment.username}</MDBTypography>
-                      <p className="small">{comment.createdDate}</p>
-                      <p>{comment.comment}</p>
-
-                      <div className="d-flex justify-content-between align-items-center">
-                        <div className="d-flex align-items-center">
-                          <a href="#!" className="link-muted me-2">
-                            <MDBIcon fas icon="thumbs-up me-1" />
-                            {comment.likes  + " ❤️"}
-                          </a>
-                        </div>
-                        <a href="#!" className="link-muted">
-                          <MDBIcon fas icon="reply me-1" /> Reply
-                        </a>
-                      </div>
-                    </div>
-                  </MDBCardBody>
-                </MDBCard>
-              </div>
-              ))}
-          </MDBCol>
-        </MDBRow>
-      </MDBContainer>
-    </section>
+    <Comments dream={dream}/>
   </div>
   );
 };

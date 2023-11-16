@@ -16,15 +16,15 @@ const Home = () => {
     return (
         <React.Fragment>
           <Navbar/>
-            <LoginPopUp user={currentUser}/>
-            <CarouselMain />
-            {currentUser && (
-              currentUser.roles[0].includes("ROLE_MENTOR") ? (<AddOfferButton user={currentUser} />)
-              : (
-                 <AddDreamButton/>))}
-            <MostPopular/>
-            <DreamsGrid/>
-            <br/>
+          <LoginPopUp user={currentUser}/>
+          <CarouselMain />
+          {currentUser && (
+            currentUser.roles[0].includes("ROLE_MENTOR") ? (<AddOfferButton user={currentUser} />)
+            : (
+                <AddDreamButton/>))}
+          <MostPopular/>
+          <DreamsGrid/>
+          <br/>
         </React.Fragment>
     )
 }

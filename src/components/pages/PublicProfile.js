@@ -108,7 +108,7 @@ const PublicProfile = () => {
       <GoBackButton />
       <div className="profile-container">
         <div className="rounded-top text-white d-flex flex-row">
-        <div className="ms-4 mt-5 d-flex flex-column text-dark align-items-center">
+          <div className="ms-4 mt-5 d-flex flex-column text-dark align-items-center">
         {dreamer.id && dreamer.profilePictureId ? (
             <AvatarService data={dreamer.profilePictureId} className="user-photo"/>
           ) : (

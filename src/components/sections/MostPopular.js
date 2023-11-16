@@ -7,7 +7,7 @@ import defaultPhoto from '../../assets/images/Default.jpeg';
 
 const Dreams = () => {
   const [dreams, setDreams] = useState([]);
-  const wordLimit = 144;
+  const wordLimit = 160;
 
   useEffect(() => {
     fetchData()
@@ -32,36 +32,43 @@ const Dreams = () => {
       } 
       <div className="dreams-container">
         <div className="dreams-line"></div>
-        <div className="dreams">
-        {dreams && dreams.map((dream, index) => (
-        <div className="dream" key={index}>
-        <div className="dream-photo">
-        {dream.image ? (
-              <ImageService data={dream} className="dream-image" />
-              ) : (
-                <img
-                  src={defaultPhoto}
-                  alt="dream"
-                  className="dream-image"
-                />
-              )}
-      </div>
-      <div className="dream-details">
-        <div className="dream-details-title">
-        <h2>{dream.dreamTitle}</h2>
-        <span>{dream.date}</span>
-      </div>
-      <p>{dream.dreamDescription.slice(0, wordLimit)}...</p>
-      <Link className='no-decoration' to={`/dream-details/${dream.id}`}><span className='btn-dream'>Read More</span></Link>
-      <Routes>
-        <Route path="/dream-details/:id" />
-      </Routes>
-      </div>
-      </div>
-        ))}
-      </div>
-  </div>
-  </div>
+          <div className="dreams">
+            {
+              dreams && dreams.map((dream, index) => (
+                <><div className={`dream-${index}`} key={index}>
+                  <Link className='no-decoration' to={`/dream-details/${dream.id}`}>
+                    <div className="dream-photo">
+                      {dream.image ? (
+                        <ImageService data={dream} className="dream-image" />
+                      ) : (
+                        <img
+                          src={defaultPhoto}
+                          alt="dream"
+                          className="dream-image" />
+                      )}
+                    </div>
+                  </Link>
+                  <Routes>
+                    <Route path="/dream-details/:id" />
+                  </Routes>
+                </div>
+                <div className="dream-details">
+                  <div className="dream-details-title">
+                    <h2>{dream.dreamTitle}</h2>
+                  </div>
+                  {dream.dreamDescription.length <= wordLimit
+                    ? (<p>{dream.dreamDescription.slice(0, wordLimit)}</p>)
+                    : (<p>{dream.dreamDescription.slice(0, wordLimit)}...</p>)}
+                  <Link className='no-decoration' to={`/dream-details/${dream.id}`}><span className='btn-dream'>Read More</span></Link>
+                  <Routes>
+                    <Route path="/dream-details/:id" />
+                  </Routes>
+                </div></>
+              ))
+            }
+          </div>
+        </div>
+    </div>
   );
 };
 

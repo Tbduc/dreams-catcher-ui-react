@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import defaultPhoto from '../assets/images/Default.jpeg';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const ImageService = (props) => {
 
@@ -25,15 +26,11 @@ const ImageService = (props) => {
     }, [props?.data?.image?.id]);
 
     return (
-        <div className="row g-2">
-            <div className="col mb-2">
-                { image
-                ? <img src={`data:image/png;base64,${image}`}
-                alt="first" className="w-100 rounded-3" />
-                : <img src={defaultPhoto}
-                alt="first" className="w-100 rounded-3" />
-                }
-            </div>
+        <div>
+            { image
+            && <img src={`data:image/png;base64,${image}`}
+            alt="first" className="rounded-3 img-fluid w-100" />
+            }
         </div>
     )
 }

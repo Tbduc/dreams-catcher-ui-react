@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import "../../styles/AllDreams.css";
+import "../../styles/OfferPage.css";
 import { Link } from 'react-router-dom';
 import ImageService from "../../services/ImageService";
 import defaultPhoto from '../../assets/images/Default.jpeg';
@@ -28,14 +28,16 @@ const AllDreams = () => {
       <div className="header">
         <h1 className="all">ALL DREAMS</h1>
       </div>
-      { dreams.length == 0 &&
+      { dreams.length == 0 ? (
           <div class="loader-container d-flex justify-content-center">
             <div class="loader"></div>
           </div>
-      } 
+      ) : (
       <div className="dreams-grid">
-        {dreams && dreams.map(dream => (
-          <Link to={`/dream-details/${dream.id}`} key={dream.id} className="dream-item">
+        {Array.isArray(dreams) 
+          ? dreams.map(dream => (
+          <div className="dream-item">
+            <Link to={`/dream-details/${dream.id}`} key={dream.id}>
             <div className="dream-image-container">
             { typeof dream.image !== Number ? (
               <ImageService data={dream} className="dream-image" />
@@ -48,9 +50,11 @@ const AllDreams = () => {
             )}
               <div className="dream-title-page">{dream.dreamTitle}</div>
             </div>
-          </Link>
-        ))}
-      </div>
+            </Link>
+          </div>
+        ))
+        : null}
+      </div>)}
     </div>
     </div>
   );

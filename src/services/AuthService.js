@@ -54,7 +54,6 @@ class AuthService {
   
     return axios.get(API_BASE_URL + "/api/v1/users/profile")
     .then(response => {
-      console.log(response.data)
       localStorage.setItem("user", JSON.stringify(response.data));
 
       return response.data;
