@@ -15,7 +15,6 @@ import {
 const Comments = (props) => {
     const commentsUrl = `http://localhost:8080/api/v1/comments/dream/${props.dream.id}`;
     const [comments, setComments] = useState([]);
-    const [liked, setLiked] = useState(false);
 
     useEffect(() => {
         fetch(commentsUrl)
@@ -48,11 +47,7 @@ const Comments = (props) => {
                                     <p>{comment.comment}</p>
                                     <div className="d-flex justify-content-between align-items-center">
                                         <div className="d-flex align-items-center">
-                                        {   
-                                            comment.userIdThatLiked.includes(comment.id) && !liked ? 
-                                            (<DislikeButton props={comment} onClick={() => setLiked(false)}/>)
-                                            : (<LikeButton props={comment} onClick={() => setLiked(true)}/>)
-                                        }
+                                            <LikeButton props={comment}/>
                                         </div>
                                         <a href="#!" className="link-muted">
                                         <MDBIcon fas icon="reply me-1" /> Reply

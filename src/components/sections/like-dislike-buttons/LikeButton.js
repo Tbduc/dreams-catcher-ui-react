@@ -126,6 +126,20 @@ function LikeButton(props) {
       .then((response) => {
           if (response.status == 200)
             setLikes(Number(props.props.likes) + 1)
+          else
+            dislikeComment()
+      })
+    } catch (error) {
+        console.log("error", error);
+    }
+  };
+
+  const dislikeComment = async () => {
+    try {
+      await fetch(COMMENT_URL + `/${props.props.id}/dislike/${props.props.userId}`, { method: 'PUT' })
+      .then((response) => {
+          if (response.status == 200)
+            setLikes(likes - 1)
       })
     } catch (error) {
         console.log("error", error);
