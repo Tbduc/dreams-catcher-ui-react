@@ -101,12 +101,11 @@ const variantsForSpark = {
 
 function DislikeButton(props) {
   const controlsForCountChange = useAnimationControls();
-  const [likes, setLikes] = useState(null);
+  const [likes, setLikes] = useState(Number(props.props.likes));
   const [isContainerHovered, setContainerHovered] = useState(false);
   const COMMENT_URL = `http://localhost:8080/api/v1/comments`;
 
   useEffect(() => {
-    setLikes(props.props.likes)
     const sequence = async () => {
       await controlsForCountChange.start("init");
       return await controlsForCountChange.start("end");
@@ -201,6 +200,7 @@ function DislikeButton(props) {
           isContainerHovered ? "#DD2E44" : likes !== 0 ? "" : "#ff314b"
         }
       />
+      <motion.div className="d-inline text-danger ms-2">{likes}</motion.div>
     </motion.div>
   );
 }

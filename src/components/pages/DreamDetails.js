@@ -19,7 +19,6 @@ const DreamDetails = () => {
     const [dream, setDream] = useState("");
     const [liked, setLiked] = useState(false);
     const [disliked, setDisliked] = useState(false);
-    const [comments, setComments] = useState([]);
 
     useEffect(() => {
       window.scrollTo(0, 0)
@@ -77,7 +76,6 @@ const DreamDetails = () => {
     return(
       <div>
       <Navbar/><br/><br/>
-      {console.log(comments)}
       <div className="h-100 gradient-custom-2">
           <div className="container py-5 h-100">
               <div className="row d-flex justify-content-center align-items-center h-100">

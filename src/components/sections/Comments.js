@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { React, useState, useEffect } from "react";
 import CommentAvatarService from "../../services/CommentAvatarService";
 import LikeButton from "./like-dislike-buttons/LikeButton";
 import DislikeButton from "./like-dislike-buttons/DislikeButton";
@@ -15,7 +15,7 @@ import {
 const Comments = (props) => {
     const commentsUrl = `http://localhost:8080/api/v1/comments/dream/${props.dream.id}`;
     const [comments, setComments] = useState([]);
-    const [likes, setLikes] = useState(null)
+    const [liked, setLiked] = useState(false);
 
     useEffect(() => {
         fetch(commentsUrl)
@@ -23,19 +23,14 @@ const Comments = (props) => {
           console.log(response);
           return response.json();
         })
-        .then(data => {setComments(data)})
+        .then(data => {
+            setComments(data)
+        })
         .catch(error => console.log(error));
     }, []);
 
-    const incrementLikes = (likes) => {
-        setLikes(likes + 1)
-    }
-
-    const decrementLikes = (likes) => {
-        setLikes(likes - 1)
-    }
+    console.log(comments)
     
-
     return (
         <div>
             <section className="vh-100">
@@ -54,12 +49,10 @@ const Comments = (props) => {
                                     <div className="d-flex justify-content-between align-items-center">
                                         <div className="d-flex align-items-center">
                                         {   
-                                            comment.userIdThatLiked.includes(comment.id) ? 
-                                            (<LikeButton props={comment} onClick={() => incrementLikes(comment.likes)}/>)
-                                            : (<DislikeButton props={comment} onClick={() => decrementLikes(comment.likes)}/>)
+                                            comment.userIdThatLiked.includes(comment.id) && !liked ? 
+                                            (<DislikeButton props={comment} onClick={() => setLiked(false)}/>)
+                                            : (<LikeButton props={comment} onClick={() => setLiked(true)}/>)
                                         }
-                                        {likes}
-                                        {console.log(typeof(comment.userIdThatLiked))}
                                         </div>
                                         <a href="#!" className="link-muted">
                                         <MDBIcon fas icon="reply me-1" /> Reply

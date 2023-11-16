@@ -101,12 +101,11 @@ const variantsForSpark = {
 
 function LikeButton(props) {
   const controlsForCountChange = useAnimationControls();
-  const [likes, setLikes] = useState(null);
+  const [likes, setLikes] = useState(Number(props.props.likes));
   const [isContainerHovered, setContainerHovered] = useState(false);
   const COMMENT_URL = `http://localhost:8080/api/v1/comments`;
 
   useEffect(() => {
-    setLikes(props.props.likes)
     const sequence = async () => {
       await controlsForCountChange.start("init");
       return await controlsForCountChange.start("end");
@@ -126,7 +125,7 @@ function LikeButton(props) {
       await fetch(COMMENT_URL + `/${props.props.id}/like/${props.props.userId}`, { method: 'PUT' })
       .then((response) => {
           if (response.status == 200)
-            setLikes(likes + 1)
+            setLikes(Number(props.props.likes) + 1)
       })
     } catch (error) {
         console.log("error", error);
@@ -201,6 +200,7 @@ function LikeButton(props) {
           isContainerHovered ? "#DD2E44" : likes !== 0 ? "" : "#ff314b"
         }
       />
+      <motion.div className="d-inline text-danger ms-2">{likes}</motion.div>
     </motion.div>
   );
 }
