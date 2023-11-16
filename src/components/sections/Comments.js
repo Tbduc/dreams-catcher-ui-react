@@ -1,7 +1,6 @@
 import { React, useState, useEffect } from "react";
 import CommentAvatarService from "../../services/CommentAvatarService";
 import LikeButton from "./like-dislike-buttons/LikeButton";
-import DislikeButton from "./like-dislike-buttons/DislikeButton";
 import {
     MDBCard,
     MDBCardBody,
