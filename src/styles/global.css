@@ -173,9 +173,31 @@
   color: #000
 }
 
+.dream-letter-text {
+  font-size: 20px;
+}
 .heart {
   position: relative;
-  /* background: yellow; */
+}
+
+.heart-dream {
+  position: relative;
+  justify-content: center;
+}
+
+.heart-label {
+  font-size: large;
+}
+
+.heartBackdropDream {
+  position: absolute;
+  display: flex;
+  width: 36px;
+  height: 36px;
+  border-radius: 100%;
+  opacity: 0.1;
+  transition: all 0.32s ease;
+  margin-right: 24px;
 }
 
 .heartBackdrop {
@@ -209,6 +231,17 @@
   height: 36px;
 }
 
+.bubbleWrapperDream {
+  box-sizing: border-box;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin-right: 24px;
+}
+
 .bubble {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -216,10 +249,7 @@
   width: 3rem;
   min-width: 3rem;
   height: 3rem;
-  /* background-color: chartreuse; */
-  /* border: 2px solid transparent; */
   border-style: solid;
-  /* border-color: teal; */
   border-width: 0px;
   border-radius: 100%;
   opacity: 1;
@@ -231,13 +261,24 @@
   display: flex;
   justify-content: center;
   position: absolute;
-  /* border: 1px dotted rgba(255, 42, 255, 0.582); */
   width: 36px;
   height: 36px;
   opacity: 1;
   scale: 2;
   border-radius: 100%;
-  /* overflow: hidden; */
+}
+
+.sparkWrapperDream {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  opacity: 1;
+  scale: 2;
+  border-radius: 100%;
+  margin-right: 24px;
 }
 
 .sparkGroup {

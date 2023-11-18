@@ -1,5 +1,6 @@
 import axios from "axios";
 import { API_BASE_URL, ACCESS_TOKEN } from "../constants";
+import { error } from "jquery";
 const API_URL = "http://localhost:8080/api/v1/auth/";
 
 
@@ -40,11 +41,12 @@ class AuthService {
   }
 
   async getCurrentUserImgId(userId) {
-    return axios.get(API_BASE_URL + `/api/v1/users/profile-auth/${userId}`)
+    return await axios.get(API_BASE_URL + `/api/v1/users/profile-auth/${userId}`)
     .then(response => {
       console.log(response.data)
       return response.data;
     })
+    .catch(error = () => console.log(error))
   }
 
   getCurrentUserOauth2() {
@@ -58,7 +60,18 @@ class AuthService {
 
       return response.data;
     })
+    .catch(error = () => console.log(error))
   }
+
+  getCurrentUserAgain = async () => {
+    return await axios.get(API_BASE_URL + "/api/v1/users/profile")
+    .then(response => {
+      localStorage.setItem("user", JSON.stringify(response.data));
+      return response.data;
+    })
+    .catch(error = () => console.log(error))
+  }
+
 }
 
 export default new AuthService();

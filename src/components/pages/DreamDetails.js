@@ -6,10 +6,10 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import ImageService from "../../services/ImageService";
 import "../../styles/global.css";
 import Navbar from "../sections/Navbar";
-import likePhoto from '../../assets/images/like.jpeg';
-import dislikePhoto from '../../assets/images/dislike.jpeg';
+import AuthService from "../../services/AuthService";
 import CommentComponent from "../sections/CommentComponent";
 import Comments from "../sections/Comments";
+import LikeButtonDream from "../sections/like-dislike-buttons/LikeButtonDream";
   
 
 
@@ -17,8 +17,7 @@ const DreamDetails = () => {
     const { id } = useParams();
     const url = `http://localhost:8080/api/v1/dreams/${id}`;
     const [dream, setDream] = useState("");
-    const [liked, setLiked] = useState(false);
-    const [disliked, setDisliked] = useState(false);
+    const currentUser = AuthService.getCurrentUser();
 
     useEffect(() => {
       window.scrollTo(0, 0)
@@ -33,41 +32,6 @@ const DreamDetails = () => {
       };
       fetchData();
     }, [id]);
-
-    const handleLikeDislikeDream = () => {
-        if (liked) {
-          handleDislikeDream();
-          setLiked(false);
-          setDisliked(true);
-        } else if (disliked) {
-          handleLikeDream();
-          setLiked(true);
-          setDisliked(false);
-        } else {
-          handleLikeDream();
-          setLiked(true);
-        }
-      }
-
-    const handleLikeDream = async () => {
-        try {
-          await fetch(`${url}/like`, { method: 'PUT' });
-          setLiked(true);
-          setDream({ ...dream, likes: dream.likes + 1 });
-        } catch (error) {
-          console.log("error", error);
-        }
-    }
-
-    const handleDislikeDream = async () => {
-        try {
-            await fetch(`${url}/dislike`, { method: 'PUT' });
-            setDisliked(true);
-            setDream({ ...dream, likes: dream.likes - 1 });
-        } catch (error) {
-            console.log("error", error);
-        }
-    }
 
     if (!dream) {
         return <div>Loading...</div>;
@@ -91,10 +55,6 @@ const DreamDetails = () => {
                           </div>
                           <div className="p-4 text-black">
                               <div className="d-flex justify-content-center text-center py-1">
-                              <div>
-                                  <p className="mb-1 h5">{dream.likes}</p>
-                                  <p className="small text-muted mb-0">Likes</p>
-                              </div>
                                   <div className="px-3">
                                       { dream.comments && <p className="mb-1 h5">{Object.keys(dream.comments).length}</p> }
                                       <p className="small text-muted mb-0">Comments</p>
@@ -112,12 +72,11 @@ const DreamDetails = () => {
                             <div className="d-flex justify-content-center text-center py-1">
                                   { dream.dreamStatus && <p className="lead fw-normal mb-0">Hashtags: {dream.hashtags.join(', ')}</p> }
                             </div>
+
+                            <LikeButtonDream dream={dream} user={currentUser}/>
+
                             <div className="d-flex justify-content-center text-center py-1">
-                                <button id="like-dislike" style={{backgroundImage: `url(${liked ? dislikePhoto : disliked ? likePhoto : likePhoto})`, width: '90px', height: '90px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', border: 'none'}} onClick={handleLikeDislikeDream}>
-                                </button>               
-                            </div>
-                            <div className="d-flex justify-content-center text-center py-1">
-                                <p className="text-center">Send a Letter with donation</p>
+                                <p className="text-center dream-letter-text">Send a Letter with donation</p>
                             </div>
                             <p className="text-center">
                                 <Link to={`/paypal-transfer/${id}`}><FontAwesomeIcon className="mt-1 h1 envelope" icon={faEnvelope} /></Link>

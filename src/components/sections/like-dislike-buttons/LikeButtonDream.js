@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, useAnimationControls, AnimatePresence } from "framer-motion";
+import AuthService from "../../../services/AuthService";
 import "../../../styles/global.css";
 
 const variantsForBubble = {
@@ -99,34 +100,53 @@ const variantsForSpark = {
   })
 };
 
-function LikeButton(props) {
+function LikeButtonDream(props) {
   const controlsForCountChange = useAnimationControls();
-  const [likes, setLikes] = useState(Number(props.comment.likes));
+  const [likes, setLikes] = useState(Number(props.dream.likes));
+  const [likedDreamsIds, setLikedDreamsIds] = useState([]);
   const [isContainerHovered, setContainerHovered] = useState(false);
-  const COMMENT_URL = `http://localhost:8080/api/v1/comments`;
+  const [user, setUser] = useState(props.user)
+  const url = `http://localhost:8080/api/v1/dreams`;
+  const [color, setColor] = useState("#DD2E44")
 
   useEffect(() => {
     const sequence = async () => {
       await controlsForCountChange.start("init");
       return await controlsForCountChange.start("end");
     };
+
     if (likes !== 0) {
       controlsForCountChange.start("animationOnCountChange");
       sequence();
     }
-  }, [controlsForCountChange, likes]);
+
+    if (user)
+      setLikedDreamsIds(user.likedDreamsIds);
+
+    if (!likedDreamsIds) {
+      reloadUserData()
+      setColor("transparent")
+    }
+    else if (!likedDreamsIds.includes(props.dream.id))
+      setColor("transparent")
+    else if (likedDreamsIds.includes(props.dream.id))
+      setColor("#DD2E44")
+
+  }, [controlsForCountChange, likes, likedDreamsIds]);
 
   const addEntryClick = () => {
-    likeComment()
+    if (user)
+      likeComment()
   };
 
   const likeComment = async () => {
     try {
-      await fetch(COMMENT_URL + `/${props.comment.id}/like/${props.comment.userId}`, { method: 'PUT' })
+      await fetch(url + `/${props.dream.id}/like/${props.user.id}`, { method: 'PUT' })
       .then((response) => {
-          if (response.status == 200)
-            setLikes(Number(props.comment.likes) + 1)
-          else
+          if (response.status == 200) {
+            setLikes(Number(props.dream.likes) + 1)
+            setColor("#DD2E44")
+          } else
             dislikeComment()
       })
     } catch (error) {
@@ -136,19 +156,32 @@ function LikeButton(props) {
 
   const dislikeComment = async () => {
     try {
-      await fetch(COMMENT_URL + `/${props.comment.id}/dislike/${props.comment.userId}`, { method: 'PUT' })
+      await fetch(url + `/${props.dream.id}/dislike/${props.user.id}  `, { method: 'PUT' })
       .then((response) => {
-          if (response.status == 200)
+          if (response.status == 200) {
             setLikes(likes - 1)
+            reloadUserData()
+            setColor("transparent")
+          }
       })
     } catch (error) {
         console.log("error", error);
     }
   };
 
+  const reloadUserData = () => {
+    let userSecond = getUserAfterDislike()
+    setUser(userSecond)
+    setLikedDreamsIds(userSecond.likedDreamsIds)
+  }
+
+  const getUserAfterDislike = () => {
+    return AuthService.getCurrentUserImgId(props.user.id)
+  }
+
   return (
     <motion.div
-      className="container"
+      className="container d-flex justify-content-center my-4"
       onClick={() => addEntryClick()}
       onMouseEnter={() => setContainerHovered(true)}
       onMouseLeave={() => setContainerHovered(false)}
@@ -159,7 +192,7 @@ function LikeButton(props) {
         return (
           <motion.div
             key={spark.id}
-            className="sparkWrapper"
+            className="sparkWrapperDream"
             custom={customValue}
             style={{ rotate: (360 / sparkSpecs.length) * spark.id, scale: 0 }}
             variants={variantsForSparkWrapper}
@@ -190,7 +223,7 @@ function LikeButton(props) {
         );
       })}
 
-      <div className="bubbleWrapper">
+      <div className="bubbleWrapperDream">
         <motion.div
           className="bubble"
           animate={controlsForCountChange}
@@ -198,23 +231,23 @@ function LikeButton(props) {
         />
       </div>
       <motion.div
-        className="heartBackdrop"
+        className="heartBackdropDream"
         style={{
           backgroundColor: isContainerHovered ? "#DD2E44" : "transparent",
           transform: isContainerHovered ? "scale(2)" : "scale(0)"
         }}
       />
-      <HeartIcon
-        className="heart"
+      <HeartIconDream
+        className="heart-dream"
         initial="end"
         animate={controlsForCountChange}
         variants={variantsForHeart}
-        heartColor={likes !== 0 ? "#DD2E44" : "transparent"}
+        heartColor={color}
         borderColor={
           isContainerHovered ? "#DD2E44" : likes !== 0 ? "" : "#ff314b"
         }
       />
-      <motion.div className="d-inline text-danger ms-2">{likes}</motion.div>
+      <motion.div className="heart-label d-inline text-danger mt-1">{likes}</motion.div>
     </motion.div>
   );
 }
@@ -229,11 +262,11 @@ const sparkSpecs = [
   { id: 7, childColorA: "#91D2FA", childColorB: "#D59BF3" }
 ];
 
-function HeartIcon(props) {
+function HeartIconDream(props) {
   return (
     <motion.svg
-      width={36}
-      height={36}
+      width={50}
+      height={50}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
@@ -248,4 +281,4 @@ function HeartIcon(props) {
   );
 }
 
-export default LikeButton;
+export default LikeButtonDream;

@@ -26,14 +26,6 @@ class OAuth2RedirectHandler extends Component {
                     pathname: "/profile",
                     state: { from: this.props.location }
                 }}/>
-            
-                // <Navigate to={{
-                //     pathname: "/login",
-                //     state: { 
-                //         from: this.props.location,
-                //         error: error 
-                //     }
-                // }}/>
         )
     }
 }
