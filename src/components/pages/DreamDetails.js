@@ -67,7 +67,7 @@ const DreamDetails = () => {
                           </div>
                         <div className="card-body p-4 text-black">
                         <div className="d-flex justify-content-center text-center py-1">
-                                { dream.dreamStatus && <p className="lead fw-normal mb-1 pa-2">Status: <div className="p-2 bg-success d-inline text-light rounded-pill">{dream.dreamStatus}</div></p>}
+                            { dream.dreamStatus && <p className="lead fw-normal mb-1 pa-2">Status: <div className="p-2 bg-success d-inline text-light rounded-pill">{dream.dreamStatus}</div></p>}
                             </div><br/>
                             <div className="d-flex justify-content-center text-center py-1">
                                   { dream.dreamStatus && <p className="lead fw-normal mb-0">Hashtags: {dream.hashtags.join(', ')}</p> }

@@ -109,7 +109,8 @@ function LikeButtonDream(props) {
   let sequence = null;
 
   useEffect(() => {
-    checkHeartColor(props.user.likedDreamsIds)
+    if (user)
+      checkHeartColor(user.likedDreamsIds)
     sequence = async () => {
       await controlsForCountChange.start("init");
       return await controlsForCountChange.start("end");
