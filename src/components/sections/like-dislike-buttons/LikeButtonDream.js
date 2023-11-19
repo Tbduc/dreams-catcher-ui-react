@@ -77,7 +77,6 @@ const variantsForSpark = {
   init: (custom) => ({
     scale: 1,
     margin: 0,
-    // backgroundColor: "yellow",
     backgroundColor: custom[1],
     transition: {
       duration: 0,
@@ -87,7 +86,6 @@ const variantsForSpark = {
   end: (custom) => ({
     scale: 0,
     margin: 2,
-    // backgroundColor: "red",
     backgroundColor: custom[2],
     transition: {
       duration: custom[0],
@@ -103,28 +101,21 @@ const variantsForSpark = {
 function LikeButtonDream(props) {
   const controlsForCountChange = useAnimationControls();
   const [likes, setLikes] = useState(Number(props.dream.likes));
-  const [likedDreamsIds, setLikedDreamsIds] = useState([]);
+  const [likedDreamsIds, setLikedDreamsIds] = useState(props.user.likedDreamsIds);
   const [isContainerHovered, setContainerHovered] = useState(false);
-  const [user, setUser] = useState(props.user)
+  const [user, setUser] = useState(props.user);
   const url = `http://localhost:8080/api/v1/dreams`;
-  const [color, setColor] = useState("#DD2E44")
+  const [color, setColor] = useState("");
+  let sequence = null;
 
   useEffect(() => {
-    reloadUserData()
-    const sequence = async () => {
+    checkHeartColor(props.user.likedDreamsIds)
+    sequence = async () => {
       await controlsForCountChange.start("init");
       return await controlsForCountChange.start("end");
     };
-
-    if (likes !== 0) {
-      controlsForCountChange.start("animationOnCountChange");
-      sequence();
-    }
-
-    if (user)
-      setLikedDreamsIds(user.likedDreamsIds)
-
-  }, [controlsForCountChange, likes, likedDreamsIds]);
+    
+  }, [controlsForCountChange]);
 
   const addEntryClick = () => {
     if (user)
@@ -137,16 +128,13 @@ function LikeButtonDream(props) {
       .then((response) => {
           if (response.status == 200) {
             setLikes(Number(props.dream.likes) + 1)
-            setColor("#DD2E44")
+            controlsForCountChange.start("animationOnCountChange")
+            sequence()
+            reloadUserData()
+            setLikedDreamsIds(user.likedDreamsIds)
           } else
-            dislikeComment()
+              dislikeComment()
       })
-      .then(
-        reloadUserData()
-      )
-      .then(
-        checkHeartColor()
-      )
     } catch (error) {
         console.log("error", error);
     }
@@ -158,15 +146,10 @@ function LikeButtonDream(props) {
       .then((response) => {
           if (response.status == 200) {
             setLikes(likes - 1)
-            setColor("transparent")
+            reloadUserData()
+            setLikedDreamsIds(user.likedDreamsIds)
           }
       })
-      .then(
-        reloadUserData()
-      )
-      .then(
-        checkHeartColor()
-      )
     } catch (error) {
         console.log("error", error);
     }
@@ -175,19 +158,15 @@ function LikeButtonDream(props) {
   const reloadUserData = () => {
     let userSecond = getUserAfterDislike()
     setUser(userSecond)
-    setLikedDreamsIds(userSecond.likedDreamsIds)
   }
 
-  const checkHeartColor = () => {
-    if (!likedDreamsIds) {
+  const checkHeartColor = (array) => {
+    if (!array) {
       setColor("transparent")
-      console.log("if")
-    } else if (!likedDreamsIds.includes(props.dream.id)) {
+    } else if (!array.includes(props.dream.id)) {
       setColor("transparent")
-      console.log("else if 1")
-    } else {
+    } else if (array.includes(props.dream.id)) {
       setColor("#DD2E44")
-      console.log("else if 2")
     }
   }
 
@@ -197,7 +176,7 @@ function LikeButtonDream(props) {
 
   return (
     <motion.div
-      className="container d-flex justify-content-center my-4"
+      className="container d-flex justify-content-center my-4 ms-2"
       onClick={() => addEntryClick()}
       onMouseEnter={() => setContainerHovered(true)}
       onMouseLeave={() => setContainerHovered(false)}

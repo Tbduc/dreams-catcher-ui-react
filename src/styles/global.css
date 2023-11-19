@@ -288,28 +288,23 @@
   justify-content: center;
   gap: 1px;
   height: min-content;
-  /* background: yellow; */
   overflow: hidden;
 }
 
 .spark {
   width: 3px;
   height: 3px;
-  /* background: red; */
-  /* border: 1px solid red; */
   border-radius: 100%;
 }
 
 .labelClipper {
   position: absolute;
-  /* right: -3rem; */
   bottom: 50px;
   height: 2.2rem;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: flex-end;
-  /* background: green; */
   overflow: hidden;
 }
 
