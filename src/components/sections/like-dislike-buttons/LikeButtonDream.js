@@ -110,6 +110,7 @@ function LikeButtonDream(props) {
   const [color, setColor] = useState("#DD2E44")
 
   useEffect(() => {
+    reloadUserData()
     const sequence = async () => {
       await controlsForCountChange.start("init");
       return await controlsForCountChange.start("end");
@@ -121,16 +122,7 @@ function LikeButtonDream(props) {
     }
 
     if (user)
-      setLikedDreamsIds(user.likedDreamsIds);
-
-    if (!likedDreamsIds) {
-      reloadUserData()
-      setColor("transparent")
-    }
-    else if (!likedDreamsIds.includes(props.dream.id))
-      setColor("transparent")
-    else if (likedDreamsIds.includes(props.dream.id))
-      setColor("#DD2E44")
+      setLikedDreamsIds(user.likedDreamsIds)
 
   }, [controlsForCountChange, likes, likedDreamsIds]);
 
@@ -149,6 +141,12 @@ function LikeButtonDream(props) {
           } else
             dislikeComment()
       })
+      .then(
+        reloadUserData()
+      )
+      .then(
+        checkHeartColor()
+      )
     } catch (error) {
         console.log("error", error);
     }
@@ -160,10 +158,15 @@ function LikeButtonDream(props) {
       .then((response) => {
           if (response.status == 200) {
             setLikes(likes - 1)
-            reloadUserData()
             setColor("transparent")
           }
       })
+      .then(
+        reloadUserData()
+      )
+      .then(
+        checkHeartColor()
+      )
     } catch (error) {
         console.log("error", error);
     }
@@ -173,6 +176,19 @@ function LikeButtonDream(props) {
     let userSecond = getUserAfterDislike()
     setUser(userSecond)
     setLikedDreamsIds(userSecond.likedDreamsIds)
+  }
+
+  const checkHeartColor = () => {
+    if (!likedDreamsIds) {
+      setColor("transparent")
+      console.log("if")
+    } else if (!likedDreamsIds.includes(props.dream.id)) {
+      setColor("transparent")
+      console.log("else if 1")
+    } else {
+      setColor("#DD2E44")
+      console.log("else if 2")
+    }
   }
 
   const getUserAfterDislike = () => {

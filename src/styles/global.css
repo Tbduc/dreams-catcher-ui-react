@@ -178,11 +178,13 @@
 }
 .heart {
   position: relative;
+  cursor: pointer;
 }
 
 .heart-dream {
   position: relative;
   justify-content: center;
+  cursor: pointer;
 }
 
 .heart-label {
